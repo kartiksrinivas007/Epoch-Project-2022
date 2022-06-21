@@ -9,7 +9,7 @@ class Logisitic_Classifier():
         # Now we do intialization of the weights
         np.random.seed(0)
         self.params['W'] = np.random.randn(input_dim, 1)*0.01
-        self.params['b'] = 0
+        self.params['b'] = np.zeros((1,1))
         pass
     def loss(self,X,y = None): # this function will perform both the backward and forward passes and return the gradients 
         # define a mode here, i.e. a training mode or a test mode

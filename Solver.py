@@ -16,9 +16,9 @@ class Solver():
         self.vel_history = np.array([])
         pass
     def train(self):
-        mu = 0.9
+        mu = 0.95
         v_w = np.zeros(self.model.params['W'].shape)
-        v_b = 0
+        v_b = np.zeros_like(self.model.params['b'])
         for i in range(self.num_epochs):
             for j in range(self.data['X_train'].shape[0] // self.batch_size):
                 X_batch = self.data['X_train'][j * self.batch_size:(j + 1) * self.batch_size, :]
@@ -28,6 +28,8 @@ class Solver():
                 v_b = v_b*mu - self.lr * grads['b']
                 self.model.params['W'] += v_w
                 self.model.params['b'] += v_b
+                # self.model.params['W'] += -1 * self.lr * grads['W']
+                # self.model.params['b'] += -1 * self.lr * grads['b']
                 if(j % self.print_every == 0):
                     print("Epoch = ", i, "Batch = ", j, "Loss = ", loss, "Gradient_max = ", np.max(abs(grads['W'])), "learning rate ratio = ",np.max(self.lr*grads['W']/self.model.params['W']))
                     self.loss_history = np.append(self.loss_history, loss)
