@@ -14,13 +14,13 @@ def cross_entropy_loss(a, y):
 
 def cross_entropy_loss_backward(cache):
     a, loss_vector, y = cache
-    dscores =  ((1 - y) / (1 - a) - y / a)
+    dscores =  ((1 - y) / (1 - a) - (y / a))
     return dscores
 
 
 def sigmoid(z):
     # print("z min  is = ", np.min(z))
-    return 1 / (1 + np.exp(-z))
+    return 1.0 / (1.0 + np.exp(-z))
 
 
 def sigmoid_forward(x, w, b):

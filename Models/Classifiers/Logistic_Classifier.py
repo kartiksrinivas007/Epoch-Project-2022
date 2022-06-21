@@ -1,5 +1,5 @@
 import numpy as np
-from Layers import *
+from ..Layers import *
 
 class Logisitic_Classifier():
     def __init__(self, input_dim, reg = 0.01):
@@ -20,11 +20,11 @@ class Logisitic_Classifier():
             grads = {}
             scores, cache['sig'] = sigmoid_forward(X,self.params['W'],self.params['b'])
             loss, cache['log'] = cross_entropy_loss(scores, y)
-            dscores  = cross_entropy_loss_backward(cache['log'])
-            dw, db = sigmoid_backward(dscores, cache['sig'])
+            # dscores  = cross_entropy_loss_backward(cache['log'])
+            dw,db = cross_entropy_and_sigmoid_backward(cache['sig'], y)
             
             loss = loss + self.reg * np.sum(self.params['W'] * self.params['W'])
-            grads['W'] = dw + self.reg * self.params['W']
+            grads['W'] = dw + 2 * self.reg * self.params['W']
             grads['b'] = db
 
             return loss, grads
