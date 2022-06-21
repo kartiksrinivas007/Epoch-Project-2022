@@ -18,7 +18,7 @@ class Solver():
     def train(self):
         mu = 0.95
         v_w = np.zeros(self.model.params['W'].shape)
-        v_b = np.zeros_like(self.model.params['b'])
+        v_b = np.zeros_like(self.model.params['b']) 
         for i in range(self.num_epochs):
             for j in range(self.data['X_train'].shape[0] // self.batch_size):
                 X_batch = self.data['X_train'][j * self.batch_size:(j + 1) * self.batch_size, :]
