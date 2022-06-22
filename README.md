@@ -10,11 +10,8 @@ I have implemented Logistic Regression and a Two Layer Neural Network, completel
 The dataset used is the Red Wine Dataset: https://github.com/Epoch-IITH/2022---2023/tree/main/Core%20Selection%20Hackathon
 
 The Solver I have implemented uses Stochastic Gradient Descent <br>
-$
-\begin{gather}
-     P = P - \alpha * \frac{\partial J}{\partial P}
-\end{gather}
-$
+
+<img src="https://latex.codecogs.com/gif.latex?P = P - \alpha * \frac{\partial J}{\partial P}"/>
 
 It can also use Stochastic Graident Descent with `Momentum`
 
