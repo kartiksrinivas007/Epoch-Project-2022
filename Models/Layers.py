@@ -1,5 +1,6 @@
 import numpy as np
 
+#This is binary cross entropy loss only 
 def cross_entropy_loss(a, y):
     # print(a.shape)
     # print(y.shape)
@@ -36,7 +37,7 @@ def sigmoid_backward(dscores, cache): # numeric instability issues with the sigm
     db = np.sum(dz, axis=0) 
     return dw, db
 
-def cross_entropy_and_sigmoid_backward(cache, y):
+def cross_entropy_and_sigmoid_backward(cache, y): # utility function for ease
     x, w, b, a = cache
     dz = a - y
     dw = np.dot(x.T, dz)
@@ -66,7 +67,7 @@ def relu_backward(dout, cache):
     dx = dout * (x > 0)
     return dx
 
-def softmax_loss(x, y):
+def softmax_loss(x, y): # this is a numerically stable version of cross entropy loss (I learnt this form CS231N)
     probs = np.exp(x - np.max(x, axis=1, keepdims=True))
     probs /= np.sum(probs, axis=1, keepdims=True)
     N = x.shape[0]
